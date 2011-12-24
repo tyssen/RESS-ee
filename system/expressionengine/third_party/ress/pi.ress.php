@@ -4,7 +4,7 @@ $plugin_info = array(
   'pi_name' => 'RESS',
   'pi_version' =>'1.0.0',
   'pi_author' =>'John Faulds',
-  'pi_author_url' => 'http://www.tyssendesign.com.au',
+  'pi_author_url' => 'https://github.com/tyssen/RESS-ee',
   'pi_description' => 'RESS (Responsive Design + Server Side Components) plugin - detect screen resolution via javascript and then set a variable to access in your templates. Useful for creating Responsive layouts that adapt to users’ screen size. Based on https://github.com/jiolasa/Simple-RESS',
   'pi_usage' => Ress::usage()
   );
@@ -18,9 +18,9 @@ class Ress {
 
 	public function cookie()
     {
-		if(!isset($_COOKIE['resolution'])) 
+		if(!isset($_COOKIE['screensize'])) 
 		{
-			return "<script>document.cookie='resolution='+$(window).width()+'; path=/';location.reload(true);</script>";
+			return "<script>document.cookie='screensize='+$(window).width()+'; path=/';location.reload(true);</script>";
 		}
 	}
 
