@@ -68,5 +68,5 @@ class Ress {
 
 }
 
-/* End of file pi.plugin_name.php */
-/* Location: ./system/expressionengine/third_party/plugin_name/pi.plugin_name.php */
+/* End of file pi.ress.php */
+/* Location: ./system/expressionengine/third_party/ress/pi.ress.php */

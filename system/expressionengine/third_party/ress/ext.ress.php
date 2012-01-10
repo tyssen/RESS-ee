@@ -134,5 +134,5 @@ class Ress_ext {
 	// ----------------------------------------------------------------------
 }
 
-/* End of file ext.openid.php */ 
-/* Location: ./system/expressionengine/third_party/last_segment/ext.last_segment.php */ 
+/* End of file ext.ress.php */ 
+/* Location: ./system/expressionengine/third_party/ress/ext.ress.php */ 
