@@ -1,14 +1,25 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Registers the current last segment as a global variable
+ * RESS Extension - Registers the current last segment as a global variable
  *
- * @package		ress
- * @subpackage	ThirdParty
+ * @package		ExpressionEngine
+ * @subpackage	Addons
  * @category	Extension
- * @author		John Faulds
+ * @version		1.0
+ * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
  * @link		https://github.com/tyssen/RESS-ee
+ * @license		http://creativecommons.org/licenses/by-sa/3.0/
  */
+
+/**
+* Changelog
+* 
+* Version 1.0 20120109
+* --------------------
+* Initial public release
+*/
+
 class Ress_ext {
 
 	var $settings        = array();
@@ -18,6 +29,8 @@ class Ress_ext {
 	var $description     = 'RESS (Responsive Design + Server Side Components) Extension - detect screen resolution via javascript and then set a variable to access in your templates. Useful for creating Responsive layouts that adapt to users’ screen size. Based on https://github.com/jiolasa/Simple-RESS';
 	var $settings_exist  = 'y';
 	var $docs_url        = '';
+
+	private $EE;
 
 	/**
 	 * Constructor 
@@ -43,87 +56,40 @@ class Ress_ext {
 	
 	}
 
-	
-	/**
-	 * Update the extension
-	 * 
-	 * @param $current current version number
-	 * @return boolean indicating whether or not the extension was updated 
-	 */
-	function update_extension($current='')
-	{    
-		if ($current == '' OR $current == $this->version)
-		{
-			return FALSE;
-		}
-		
-		if ($current < '1.0')
-		{
-			// Update to version 1.0
-		}
-
-		$this->EE->db->where('class', __CLASS__);
-		$this->EE->db->update(
-			'extensions',
-			array('version' => $this->version)
-		);
-	}
-		
-	/**
-	 * Disable the extention
-	 * 
-	 * @return unknown_type
-	 */    
-	function disable_extension()
-	{		
-		//
-		// Remove added hooks
-		//
-		$this->EE->db->where('class', __CLASS__);
-		$this->EE->db->delete('extensions');	
-	}
-
 	/**
 	 * Activate the extension
 	 * 
 	 * This function is run on install and will register all hooks
 	 * 
 	 */
-	function activate_extension()
+	public function activate_extension()
 	{
+		// Setup custom settings in this array.
+		$this->settings = array(
+			'fallback_size'   => 960
+		);
 		
-		 // -------------------------------------------------
-		 // Register the hooks needed for this extension 
-		 // -------------------------------------------------
-		 
-		$register_hooks = array(			
-			'sessions_start' => 'on_sessions_start',				
+		$data = array(
+			'class'		=> __CLASS__,
+			'method'	=> 'on_sessions_start',
+			'hook'		=> 'sessions_start',
+			'settings'	=> serialize($this->settings),
+			'version'	=> $this->version,
+			'enabled'	=> 'y'
 		);
 
-		$this->settings = array(
-			'fallback_size'   => 1024
-		);
-		
-		$class_name = get_class($this);
-		foreach($register_hooks as $hook => $method)
-		{
-			$data = array(                                        
-				'class'        => $class_name,
-				'method'       => $method,
-				'hook'         => $hook,
-				'settings'     => "serialize($this->settings)",
-				'priority'     => 10,
-				'version'      => $this->version,
-				'enabled'      => "y"
-			);
-			$this->EE->db->insert('extensions', $data); 	
-		}
+		$this->EE->db->insert('extensions', $data);			
 		
 	}
 
-	//
-	// HOOKS
-	//
+	// ----------------------------------------------------------------------
+	
+	/**
+	 * on_sessions_start
+	 *
+	 * @param 
+	 * @return 
+	 */
 
 	function on_sessions_start($ref)
 	{
@@ -131,7 +97,41 @@ class Ress_ext {
 		$screensize = !empty($_COOKIE['screensize']) ? $_COOKIE['screensize'] : $fallback_size;
 		$this->EE->config->_global_vars['ress'] = $screensize;
 	}
+	
+// ----------------------------------------------------------------------
 
+	/**
+	 * Disable Extension
+	 *
+	 * This method removes information from the exp_extensions table
+	 *
+	 * @return void
+	 */
+	function disable_extension()
+	{
+		$this->EE->db->where('class', __CLASS__);
+		$this->EE->db->delete('extensions');
+	}
+
+	// ----------------------------------------------------------------------
+
+	/**
+	 * Update Extension
+	 *
+	 * This function performs any necessary db updates when the extension
+	 * page is visited
+	 *
+	 * @return 	mixed	void on update / false if none
+	 */
+	function update_extension($current = '')
+	{
+		if ($current == '' OR $current == $this->version)
+		{
+			return FALSE;
+		}
+	}	
+	
+	// ----------------------------------------------------------------------
 }
 
 /* End of file ext.openid.php */ 

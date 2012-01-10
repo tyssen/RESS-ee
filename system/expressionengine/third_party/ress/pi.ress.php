@@ -1,5 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * RESS Extension - Registers the current last segment as a global variable
+ *
+ * @package		ExpressionEngine
+ * @subpackage	Addons
+ * @category	Plugin
+ * @version		1.0
+ * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
+ * @link		https://github.com/tyssen/RESS-ee
+ * @license		http://creativecommons.org/licenses/by-sa/3.0/
+ */
+
 $plugin_info = array(
   'pi_name' => 'RESS',
   'pi_version' =>'1.0.0',
@@ -33,7 +45,7 @@ class Ress {
 	 * @access	public
 	 * @return	string
 	 */	
-	  function usage()
+	  public static function usage()
 	  {
 	  ob_start(); 
 	  ?>
