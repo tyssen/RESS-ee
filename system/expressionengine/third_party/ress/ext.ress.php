@@ -6,7 +6,7 @@
  * @package		ExpressionEngine
  * @subpackage	Addons
  * @category	Extension
- * @version		1.0
+ * @version		1.0.0
  * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
  * @link		https://github.com/tyssen/RESS-ee
  * @license		http://creativecommons.org/licenses/by-sa/3.0/

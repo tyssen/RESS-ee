@@ -6,15 +6,27 @@
  * @package		ExpressionEngine
  * @subpackage	Addons
  * @category	Plugin
- * @version		1.0
+ * @version		1.0.1
  * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
  * @link		https://github.com/tyssen/RESS-ee
  * @license		http://creativecommons.org/licenses/by-sa/3.0/
  */
 
+ /**
+* Changelog
+* 
+* Version 1.0.0 20120109
+* --------------------
+* Initial public release
+*
+* Version 1.0.1 20120109
+* --------------------
+* Changed (window).width() which requires jQuery to Math.max(screen.width,screen.height) because it was reporting an incorrect size on iOS.
+*/
+
 $plugin_info = array(
   'pi_name' => 'RESS',
-  'pi_version' =>'1.0.0',
+  'pi_version' =>'1.0.1',
   'pi_author' =>'John Faulds',
   'pi_author_url' => 'https://github.com/tyssen/RESS-ee',
   'pi_description' => 'RESS (Responsive Design + Server Side Components) plugin - detect screen resolution via javascript and then set a variable to access in your templates. Useful for creating Responsive layouts that adapt to users’ screen size. Based on https://github.com/jiolasa/Simple-RESS',
@@ -32,7 +44,7 @@ class Ress {
     {
 		if(!isset($_COOKIE['screensize'])) 
 		{
-			return "<script>document.cookie='screensize='+$(window).width()+'; path=/';location.reload(true);</script>";
+			return "<script>document.cookie='screensize='+Math.max(screen.width,screen.height)+'; path=/';location.reload(true);</script>";
 		}
 	}
 
