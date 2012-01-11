@@ -22,6 +22,10 @@
 * Version 1.0.1 20120109
 * --------------------
 * Changed (window).width() which requires jQuery to Math.max(screen.width,screen.height) because it was reporting an incorrect size on iOS.
+*
+* Version 1.0.2 20120109
+* --------------------
+* Changed Math.max(screen.width,screen.height) to window.outerWidth to measure width width instead of screen width again. Reasons why jQuery's (window).width() and window.innerWidth weren't working on iOS explained in http://tripleodeon.com/2011/12/first-understand-your-screen/
 */
 
 $plugin_info = array(
@@ -44,7 +48,7 @@ class Ress {
     {
 		if(!isset($_COOKIE['screensize'])) 
 		{
-			return "<script>document.cookie='screensize='+Math.max(screen.width,screen.height)+'; path=/';location.reload(true);</script>";
+			return "<script>document.cookie='screensize='+window.outerWidth+'; path=/';location.reload(true);</script>";
 		}
 	}
 

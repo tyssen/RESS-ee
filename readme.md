@@ -5,10 +5,16 @@ RESS (Responsive Design + Server Side Components) add-on for ExpressionEngine to
 ## Changelog
 
 1.0.0
+--------------------
 Initial public release
 
 1.0.1 - 11 Jan 2012
+--------------------
 In the plugin, changed (window).width() which requires jQuery to Math.max(screen.width,screen.height) because it was reporting an incorrect size on iOS.
+
+1.0.2 - 11 Jan 2012
+--------------------
+Changed Math.max(screen.width,screen.height) to window.outerWidth to measure width width instead of screen width again. Reasons why jQuery's (window).width() and window.innerWidth weren't working on iOS explained in [First, Understand Your Screen](http://tripleodeon.com/2011/12/first-understand-your-screen/)
 
 ## Credit
 
