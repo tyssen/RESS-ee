@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * RESS Extension - Registers the current last segment as a global variable
+ * RESS Extension - Registers the screensize as a global variable
  *
  * @package		ExpressionEngine
  * @subpackage	Addons

@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * RESS Extension - Registers the current last segment as a global variable
+ * RESS Plugin - Creates a cookie which contains the screen size detected by javascript
  *
  * @package		ExpressionEngine
  * @subpackage	Addons
