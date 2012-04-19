@@ -54,9 +54,10 @@ class Ress {
 		{
 			return "<script>
 						if (window.outerWidth) {
-								document.cookie='screensize='+window.outerWidth+'; path=/';location.reload(true);
+							document.cookie='screensize='+window.outerWidth+'; path=/';location.reload(true);
 						} else {
 							document.cookie='screensize='+document.documentElement.clientWidth+'; path=/';location.reload(true);
+						}
 					</script>";
 		}
 	}
