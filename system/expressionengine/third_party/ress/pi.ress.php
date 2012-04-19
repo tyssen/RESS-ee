@@ -26,11 +26,15 @@
 * Version 1.0.2 20120109
 * --------------------
 * Changed Math.max(screen.width,screen.height) to window.outerWidth to measure width width instead of screen width again. Reasons why jQuery's (window).width() and window.innerWidth weren't working on iOS explained in http://tripleodeon.com/2011/12/first-understand-your-screen/
+*
+* Version 1.0.3 20120419
+* --------------------
+* Added conditional to check if window.outerWidth is supported as it was reported that the cookie had a value of undefined in IE.
 */
 
 $plugin_info = array(
   'pi_name' => 'RESS',
-  'pi_version' =>'1.0.2',
+  'pi_version' =>'1.0.3',
   'pi_author' =>'John Faulds',
   'pi_author_url' => 'https://github.com/tyssen/RESS-ee',
   'pi_description' => 'RESS (Responsive Design + Server Side Components) plugin - detect screen resolution via javascript and then set a variable to access in your templates. Useful for creating Responsive layouts that adapt to users’ screen size. Based on https://github.com/jiolasa/Simple-RESS',
@@ -48,7 +52,12 @@ class Ress {
     {
 		if(!isset($_COOKIE['screensize'])) 
 		{
-			return "<script>document.cookie='screensize='+window.outerWidth+'; path=/';location.reload(true);</script>";
+			return "<script>
+						if (window.outerWidth) {
+								document.cookie='screensize='+window.outerWidth+'; path=/';location.reload(true);
+						} else {
+							document.cookie='screensize='+document.documentElement.clientWidth+'; path=/';location.reload(true);
+					</script>";
 		}
 	}
 
