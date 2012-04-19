@@ -16,6 +16,10 @@ In the plugin, changed (window).width() which requires jQuery to Math.max(screen
 --------------------
 Changed Math.max(screen.width,screen.height) to window.outerWidth to measure width width instead of screen width again. Reasons why jQuery's (window).width() and window.innerWidth weren't working on iOS explained in [First, Understand Your Screen](http://tripleodeon.com/2011/12/first-understand-your-screen/)
 
+1.0.3 19 Apr 2012
+--------------------
+Added conditional to check if window.outerWidth is supported as it was [http://www.johnfaulds.com.au/journal/responsive-layouts-with-expressionengine/#comment-420834555](reported) that the cookie had a value of 'undefined' in IE.
+
 ## Credit
 
 This is an ExpressionEngine implementation of [Simple-RESS](https://github.com/jiolasa/Simple-RESS) by Matt Stauffer.
