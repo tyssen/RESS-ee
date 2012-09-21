@@ -6,7 +6,7 @@
  * @package		ExpressionEngine
  * @subpackage	Addons
  * @category	Extension
- * @version		1.0.2
+ * @version		1.0.3
  * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
  * @link		https://github.com/tyssen/RESS-ee
  * @license		http://creativecommons.org/licenses/by-sa/3.0/
@@ -14,12 +14,12 @@
 
 /**
 * Changelog
-* 
-* Version 1.0 20120109
-* --------------------
-* Initial public release
 *
-* Version 1.0.1 20120109
+* Version 1.0.4 20120921
+* --------------------
+* Updated the plugin.
+*
+* Version 1.0.3 20120419
 * --------------------
 * Updated the plugin.
 *
@@ -27,14 +27,22 @@
 * --------------------
 * Updated the plugin.
 *
+* Version 1.0.1 20120109
+* --------------------
+* Updated the plugin.
+*
+* Version 1.0 20120109
+* --------------------
+* Initial public release
+*
 */
 
 class Ress_ext {
 
 	var $settings        = array();
-	
+
 	var $name            = 'RESS';
-	var $version         = '1.0.2';
+	var $version         = '1.0.4';
 	var $description     = 'RESS (Responsive Design + Server Side Components) Extension - detect screen resolution via javascript and then set a variable to access in your templates. Useful for creating Responsive layouts that adapt to users’ screen size. Based on https://github.com/jiolasa/Simple-RESS';
 	var $settings_exist  = 'y';
 	var $docs_url        = '';
@@ -42,16 +50,16 @@ class Ress_ext {
 	private $EE;
 
 	/**
-	 * Constructor 
-	 * 
+	 * Constructor
+	 *
 	 * @paramarray of settings
 	 */
 	function Ress_ext($settings='')
 	{
-		$this->settings = $settings;						
-		$this->EE =& get_instance();    	// Make a local reference to the ExpressionEngine super object							
+		$this->settings = $settings;
+		$this->EE =& get_instance();    	// Make a local reference to the ExpressionEngine super object
 	}
-	
+
 	/**
 	 * Settings
 	 */
@@ -62,14 +70,14 @@ class Ress_ext {
 		$settings['fallback_size'] = array('i', '', "960");
 
 		return $settings;
-	
+
 	}
 
 	/**
 	 * Activate the extension
-	 * 
+	 *
 	 * This function is run on install and will register all hooks
-	 * 
+	 *
 	 */
 	public function activate_extension()
 	{
@@ -77,7 +85,7 @@ class Ress_ext {
 		$this->settings = array(
 			'fallback_size'   => 960
 		);
-		
+
 		$data = array(
 			'class'		=> __CLASS__,
 			'method'	=> 'on_sessions_start',
@@ -87,17 +95,17 @@ class Ress_ext {
 			'enabled'	=> 'y'
 		);
 
-		$this->EE->db->insert('extensions', $data);			
-		
+		$this->EE->db->insert('extensions', $data);
+
 	}
 
 	// ----------------------------------------------------------------------
-	
+
 	/**
 	 * on_sessions_start
 	 *
-	 * @param 
-	 * @return 
+	 * @param
+	 * @return
 	 */
 
 	function on_sessions_start($ref)
@@ -106,7 +114,7 @@ class Ress_ext {
 		$screensize = !empty($_COOKIE['screensize']) ? $_COOKIE['screensize'] : $fallback_size;
 		$this->EE->config->_global_vars['ress'] = $screensize;
 	}
-	
+
 // ----------------------------------------------------------------------
 
 	/**
@@ -138,10 +146,10 @@ class Ress_ext {
 		{
 			return FALSE;
 		}
-	}	
-	
+	}
+
 	// ----------------------------------------------------------------------
 }
 
-/* End of file ext.ress.php */ 
-/* Location: ./system/expressionengine/third_party/ress/ext.ress.php */ 
+/* End of file ext.ress.php */
+/* Location: ./system/expressionengine/third_party/ress/ext.ress.php */
