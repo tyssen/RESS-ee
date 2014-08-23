@@ -6,7 +6,7 @@
  * @package		ExpressionEngine
  * @subpackage	Addons
  * @category	Plugin
- * @version		1.0.4
+ * @version		1.0.5
  * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
  * @link		https://github.com/tyssen/RESS-ee
  * @license		http://creativecommons.org/licenses/by-sa/3.0/
@@ -43,7 +43,7 @@
 
 $plugin_info = array(
   'pi_name' => 'RESS',
-  'pi_version' =>'1.0.4',
+  'pi_version' =>'1.0.5',
   'pi_author' =>'John Faulds',
   'pi_author_url' => 'https://github.com/tyssen/RESS-ee',
   'pi_description' => 'RESS (Responsive Design + Server Side Components) plugin - detect screen resolution via javascript and then set a variable to access in your templates. Useful for creating Responsive layouts that adapt to users’ screen size. Based on https://github.com/jiolasa/Simple-RESS',
