@@ -6,7 +6,7 @@
  * @package		ExpressionEngine
  * @subpackage	Addons
  * @category	Extension
- * @version		1.0.4
+ * @version		1.0.5
  * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
  * @link		https://github.com/tyssen/RESS-ee
  * @license		http://creativecommons.org/licenses/by-sa/3.0/
@@ -15,6 +15,10 @@
 /**
 * Changelog
 *
+* Version 1.0.5 20140823
+* --------------------
+* Updated the plugin.
+* 
 * Version 1.0.4 20120921
 * --------------------
 * Updated the plugin.
