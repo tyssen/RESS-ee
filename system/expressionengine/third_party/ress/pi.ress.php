@@ -17,7 +17,7 @@
 *
 * Version 1.0.5 20140823
 * --------------------
-* Replaced window.outerWidth to Verge viewportW (https://github.com/ryanve/verge#viewportw) for more accurate viewport width reporting
+* Replaced window.outerWidth with Verge viewportW (https://github.com/ryanve/verge#viewportw) for more accurate viewport width reporting
 *
 * Version 1.0.4 20120921
 * --------------------

@@ -4,6 +4,10 @@ RESS (Responsive Design + Server Side Components) add-on for ExpressionEngine to
 
 ## Changelog
 
+### 1.0.5 – 23 Aug 2014
+--------------------
+Replaced window.outerWidth with Verge viewportW (https://github.com/ryanve/verge#viewportw) for more accurate viewport width reporting
+
 ### 1.0.4 - 21 Sep 2012
 --------------------
 Added a check to see if cookies are enabled before doing location.reload(true);
