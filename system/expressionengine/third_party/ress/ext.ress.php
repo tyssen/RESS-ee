@@ -3,65 +3,24 @@
 /**
  * RESS Extension - Registers the screensize as a global variable
  *
- * @package		ExpressionEngine
- * @subpackage	Addons
- * @category	Extension
- * @version		1.0.5
+ * @package		ress
  * @author		John Faulds ~ <enquiries@tyssendesign.com.au>
- * @link		https://github.com/tyssen/RESS-ee
+ * @link			https://github.com/tyssen/RESS-ee
  * @license		http://creativecommons.org/licenses/by-sa/3.0/
  */
 
-/**
-* Changelog
-*
-* Version 1.0.5 20140823
-* --------------------
-* Updated the plugin.
-*
-* Version 1.0.4 20120921
-* --------------------
-* Updated the plugin.
-*
-* Version 1.0.3 20120419
-* --------------------
-* Updated the plugin.
-*
-* Version 1.0.2 20120109
-* --------------------
-* Updated the plugin.
-*
-* Version 1.0.1 20120109
-* --------------------
-* Updated the plugin.
-*
-* Version 1.0 20120109
-* --------------------
-* Initial public release
-*
-*/
-
 class Ress_ext {
 
-	var $settings        = array();
-
-	var $name            = 'RESS';
-	var $version         = '1.0.5';
-	var $description     = 'RESS (Responsive Design + Server Side Components) Extension - detect screen resolution via javascript and then set a variable to access in your templates. Useful for creating Responsive layouts that adapt to users’ screen size. Based on https://github.com/jiolasa/Simple-RESS';
-	var $settings_exist  = 'y';
-	var $docs_url        = '';
-
-	private $EE;
+	public $version = TEMPLATE_SYNC_VER;
+	var $settings = array();
 
 	/**
 	 * Constructor
-	 *
-	 * @paramarray of settings
 	 */
-	function Ress_ext($settings='')
+	function __construct($settings='')
 	{
 		$this->settings = $settings;
-		$this->EE =& get_instance();    	// Make a local reference to the ExpressionEngine super object
+		$this->EE = get_instance();    	// Make a local reference to the ExpressionEngine super object
 	}
 
 	/**
@@ -156,4 +115,4 @@ class Ress_ext {
 }
 
 /* End of file ext.ress.php */
-/* Location: ./system/expressionengine/third_party/ress/ext.ress.php */
+/* Location: ./system/user/addons/ress/ext.ress.php */
